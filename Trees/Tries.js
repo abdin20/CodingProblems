@@ -15,6 +15,7 @@ class TrieNode {
         let output=[]
         //go up list of parents
         while(currNode!=null){
+            
             output.unshift(currNode.key);
             currNode=currNode.parent;
         }

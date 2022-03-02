@@ -14,6 +14,8 @@ var removeNthFromEnd = function(head, n) {
     
       
     //declare dummy head 
+
+    //this is so if we have to remove the first node we wont get an null exception
     var dummy_head = new ListNode(0)
     //next one is pointing to head 
     dummy_head.next=head;
@@ -21,7 +23,7 @@ var removeNthFromEnd = function(head, n) {
      var normal=dummy_head
      var dummy= dummy_head;
      
-     //move dummy over n+1 times since starting from null ->head
+     //move dummy over n+1 because we want node right before nth node from behind to set the next variable
      for(let i=0;i<=n;i++){
          dummy=dummy.next;
      }
@@ -37,4 +39,7 @@ var removeNthFromEnd = function(head, n) {
      
      return dummy_head.next
  };
+
+
+
     
