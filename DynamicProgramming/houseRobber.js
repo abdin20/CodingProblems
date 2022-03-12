@@ -4,16 +4,22 @@
  */
  var rob = function(nums) {
     
-    if(nums.length===0) return 0
-    //dp[i] represents max profit with i amount of houses left
-    let dp=new Array(nums.length+1)
-   
-    //with no houses left max profit is 0
-    dp[nums.length]=0
-    dp[nums.length-1]=nums[nums.length-1]
+    let n =nums.length
+    let dp=new Array(n+1)
+
+    dp.fill(0)
     
-    for(let x=nums.length-2;x>=0;x--){
-        dp[x]=Math.max(dp[x+1],dp[x+2]+nums[x])
+    //robbed n houses means max profit is 0
+    dp[n]=0;
+    
+    //robbed n-1 houses means we are at last house which max profit is itself
+    dp[n-1]=nums[n-1]
+    
+    for(let i=n-2;i>-1;i--){
+        //start at second last house
+        //max profit at current house is max profit at next house, or max profit at next next house plus this one
+        dp[i] = Math.max(dp[i+1], dp[i+2] +nums[i])
+        
     }
     
     return dp[0]
